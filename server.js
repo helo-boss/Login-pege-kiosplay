@@ -7,6 +7,10 @@ const html = fs.readFileSync(path.join(__dirname, 'public', 'index.html'))
 const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN
 const telegramChatId = process.env.TELEGRAM_CHAT_ID
 
+if (!telegramBotToken || !telegramChatId) {
+  console.warn('[telegram] TELEGRAM_BOT_TOKEN atau TELEGRAM_CHAT_ID belum tersedia')
+}
+
 function sendJson(res, statusCode, body) {
   res.writeHead(statusCode, { 'Content-Type': 'application/json; charset=utf-8' })
   res.end(JSON.stringify(body))
@@ -46,7 +50,7 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === 'POST' && req.url === '/api/telegram') {
     if (!telegramBotToken || !telegramChatId) {
-      sendJson(res, 500, { ok: false, error: 'Konfigurasi Telegram belum tersedia di server.' })
+      sendJson(res, 503, { ok: false, error: 'Bot Telegram belum aktif di runtime server. Pastikan variabel proyek TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID tersedia pada deployment.' })
       return
     }
 
