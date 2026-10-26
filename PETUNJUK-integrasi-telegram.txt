@@ -1,0 +1,20 @@
+Integrasi Telegram untuk Popup Live Tracking (Vercel)
+
+File:
+- halaman-popup-live-tracking-telegram.html
+- api/telegram.js
+
+Cara pasang:
+1. Letakkan file HTML di root project Vercel (misalnya sebagai index.html atau ubah nama file menjadi index.html).
+2. Letakkan telegram.js di folder api/ sehingga path endpoint menjadi /api/telegram.
+3. Di Vercel Project Settings > Environment Variables, tambahkan:
+   TELEGRAM_BOT_TOKEN = token bot Telegram (rahasia)
+   TELEGRAM_CHAT_ID = ID chat/grup tujuan
+4. Redeploy project.
+5. Uji dengan data contoh yang tidak sensitif.
+
+Catatan keamanan:
+- Jangan menaruh token bot di HTML/browser.
+- Form hanya mengirim email kontak opsional dan kode referensi.
+- Jangan meminta atau meneruskan kata sandi, PIN, atau OTP.
+- Pastikan pengguna mengetahui bahwa data akan dikirim ke admin melalui Telegram.
