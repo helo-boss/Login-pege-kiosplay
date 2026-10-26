@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node --env-file-if-exists=.env.development.local server.js",
-    "start": "node --env-file-if-exists=.env.development.local server.js"
+    "dev": "node --env-file-if-exists=/vercel/share/.env.project --env-file-if-exists=.env.development.local server.js",
+    "start": "node --env-file-if-exists=/vercel/share/.env.project --env-file-if-exists=.env.development.local server.js"
   }
 }
